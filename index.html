@@ -2,108 +2,115 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Valentine 💖</title>
+<title>Raunit ❤️ Divya</title>
+
 <style>
 body{
-    margin:0;
-    font-family: 'Comic Sans MS', cursive;
-    background: linear-gradient(to bottom, #ffd6ec, #ffeef8);
+    font-family: Comic Sans MS;
     text-align:center;
+    background: linear-gradient(to bottom,#ffd6ec,#fff0f5);
     overflow:hidden;
 }
 
 h1{
+    color:#ff3385;
+}
+
+.container{
     margin-top:40px;
-    font-size:40px;
-    color:#ff4d88;
 }
 
 .cat{
-    width:180px;
-    animation: float 3s ease-in-out infinite;
+    width:150px;
+    transition:0.5s;
 }
 
-@keyframes float{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-15px);}
-    100%{transform:translateY(0px);}
+.name{
+    font-weight:bold;
+    color:#ff4d88;
 }
 
 button{
-    padding:15px 35px;
-    font-size:20px;
+    margin-top:20px;
+    padding:12px 25px;
     border:none;
-    border-radius:30px;
-    margin:15px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.yes{
+    border-radius:25px;
     background:#ff4d88;
     color:white;
+    font-size:18px;
+    cursor:pointer;
 }
 
-.no{
-    background:#ffc2d1;
-}
-
-button:hover{
-    transform:scale(1.1);
-}
-
-#week{
-    margin-top:30px;
+.message{
     font-size:22px;
-    color:#ff3385;
-    display:none;
+    color:#ff0066;
+    margin-top:20px;
 }
+
 </style>
 </head>
 
 <body>
 
-<h1>Will You Be My Valentine Divya? 💕</h1>
+<h1>Valentine Week 💖</h1>
 
-<img src="https://i.imgur.com/QZ7G1xB.png" class="cat">
+<div class="container">
 
-<br>
+<img id="cat1" src="raunit.png" class="cat">
+<img id="cat2" src="divya.png" class="cat">
 
-<button class="yes" onclick="showLove()">Yes 💖</button>
-<button class="no" onclick="moveNo(this)">No 😢</button>
+<div>
+<span class="name">Raunit</span> ❤️ 
+<span class="name">Divya</span>
+</div>
 
-<div id="week"></div>
+<button onclick="nextDay()">Next Day 💕</button>
+
+<div class="message" id="message"></div>
+
+</div>
 
 <script>
-function showLove(){
-    document.getElementById("week").style.display="block";
-    const days = [
-        "🌹 Rose Day - 7 Feb",
-        "💍 Propose Day - 8 Feb",
-        "🍫 Chocolate Day - 9 Feb",
-        "🧸 Teddy Day - 10 Feb",
-        "🤝 Promise Day - 11 Feb",
-        "🤗 Hug Day - 12 Feb",
-        "😘 Kiss Day - 13 Feb",
-        "❤️ Valentine’s Day - 14 Feb"
-    ];
 
-    let i=0;
-    function showNext(){
-        if(i<days.length){
-            document.getElementById("week").innerHTML += days[i] + "<br>";
-            i++;
-            setTimeout(showNext,800);
-        }
-    }
-    showNext();
+const days = [
+"🌹 Rose Day",
+"🍫 Chocolate Day",
+"🤗 Hug Day",
+"😘 Kiss Day",
+"❤️ Valentine’s Day"
+];
+
+let dayIndex = 0;
+
+function nextDay(){
+
+if(dayIndex >= days.length) return;
+
+document.getElementById("message").innerHTML = days[dayIndex];
+
+if(days[dayIndex].includes("Chocolate")){
+    document.getElementById("message").innerHTML += "<br>Raunit gives chocolate to Divya 🍫💖";
 }
 
-function moveNo(btn){
-    btn.style.position="absolute";
-    btn.style.top=Math.random()*400+"px";
-    btn.style.left=Math.random()*400+"px";
+if(days[dayIndex].includes("Hug")){
+    document.getElementById("cat1").style.transform="translateX(30px)";
+    document.getElementById("cat2").style.transform="translateX(-30px)";
+    document.getElementById("message").innerHTML += "<br>They Hug 🤗💕";
 }
+
+if(days[dayIndex].includes("Kiss")){
+    document.getElementById("cat1").style.transform="translateX(50px)";
+    document.getElementById("message").innerHTML += "<br>Divya kisses Raunit 😘💖";
+}
+
+if(days[dayIndex].includes("Valentine")){
+    document.getElementById("message").innerHTML += "<br>Forever Together 💞";
+}
+
+dayIndex++;
+
+}
+
 </script>
 
 </body>
