@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Valentine 💖</title>
+<style>
+body{
+    margin:0;
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(to bottom, #ffd6ec, #ffeef8);
+    text-align:center;
+    overflow:hidden;
+}
+
+h1{
+    margin-top:40px;
+    font-size:40px;
+    color:#ff4d88;
+}
+
+.cat{
+    width:180px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0px);}
+}
+
+button{
+    padding:15px 35px;
+    font-size:20px;
+    border:none;
+    border-radius:30px;
+    margin:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes{
+    background:#ff4d88;
+    color:white;
+}
+
+.no{
+    background:#ffc2d1;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+#week{
+    margin-top:30px;
+    font-size:22px;
+    color:#ff3385;
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Will You Be My Valentine Divya? 💕</h1>
+
+<img src="https://i.imgur.com/QZ7G1xB.png" class="cat">
+
+<br>
+
+<button class="yes" onclick="showLove()">Yes 💖</button>
+<button class="no" onclick="moveNo(this)">No 😢</button>
+
+<div id="week"></div>
+
+<script>
+function showLove(){
+    document.getElementById("week").style.display="block";
+    const days = [
+        "🌹 Rose Day - 7 Feb",
+        "💍 Propose Day - 8 Feb",
+        "🍫 Chocolate Day - 9 Feb",
+        "🧸 Teddy Day - 10 Feb",
+        "🤝 Promise Day - 11 Feb",
+        "🤗 Hug Day - 12 Feb",
+        "😘 Kiss Day - 13 Feb",
+        "❤️ Valentine’s Day - 14 Feb"
+    ];
+
+    let i=0;
+    function showNext(){
+        if(i<days.length){
+            document.getElementById("week").innerHTML += days[i] + "<br>";
+            i++;
+            setTimeout(showNext,800);
+        }
+    }
+    showNext();
+}
+
+function moveNo(btn){
+    btn.style.position="absolute";
+    btn.style.top=Math.random()*400+"px";
+    btn.style.left=Math.random()*400+"px";
+}
+</script>
+
+</body>
+</html>
